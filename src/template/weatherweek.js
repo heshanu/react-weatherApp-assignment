@@ -1,25 +1,45 @@
 import React from "react";
-import fetchData from "../Component/weatherPage/fetchData";
+import Button from "react-bootstrap/Button";
+import Card from "react-bootstrap/Card";
+import "./template.css";
+import week from ".././utils/weatheweek.js";
 
 const Weatherweek = () => {
-  //const { lan, log, location } = data;
+  const [weekWeather, setWeekWeather] = React.useState(week);
+
   return (
-    <>
-      <h1>Weather Week</h1>
-      
-      {/*data &&
-        data.map((index, d) => {
-          return (
-            <>
-              <div>
-                <h1>{lan}</h1>
-                <h1>{log}</h1>
-                <h1>{location}</h1>
+    <div className="container">
+      <div className="row">
+        <div className="col-sm">
+          <h1>Weekly Weather!</h1>
+          {JSON.stringify(weekWeather)}
+          {/*weekWeather.list[0].weather.map((m, index) => {
+            return (
+              <div key={index}>
+                {
+                  <div>
+                    <Card style={{ width: "18rem" }}>
+                      <Card.Img
+                        alt="weather status icon"
+                        className="weather-icon"
+                        variant="top"
+                        src={`http://openweathermap.org/img/w/${m.icon}.png`}
+                      />
+                      <Card.Body>
+                        <Card.Title>{weekWeather.city.country}</Card.Title>
+                        <Card.Text>{weekWeather.list[0].main.temp}</Card.Text>
+                        <Card.Text>{m.description}</Card.Text>
+                        <Button variant="primary">Go somewhere</Button>
+                      </Card.Body>
+                    </Card>
+                  </div>
+                }
               </div>
-            </>
-          );
-        })*/}
-    </>
+            );
+              })*/}
+        </div>
+      </div>
+    </div>
   );
 };
 

@@ -12,6 +12,16 @@ import LoginButton from "./template/login";
 import LogoutButton from "./template/logout";
 import Profile from "./template/profile";
 
+var column = {
+  float: "left",
+  width: "50%",
+};
+
+var row = {
+  content: "",
+  display: "table",
+  clear: "both",
+};
 function App() {
   const { isAuthenticated, isLoading } = useAuth0();
 
@@ -19,12 +29,12 @@ function App() {
     <>
       <h1>Welcome to WeatherApp!</h1>
       <h1>User is {isAuthenticated ? "Logged in" : "Not LoggedIn"}</h1>
-      <div>
-        <div className="left">
+      <div  style={row}>
+        <div  style={column}>
           <LoginButton />
           <LogoutButton />
         </div>
-        <div className="right">
+        <div  style={column}>
           <Profile />
         </div>
       </div>
@@ -33,9 +43,11 @@ function App() {
           <Route path="/weatherweek" element={<Weatherweek />} />
         </Routes>
       </BrowserRouter>
-      <br />
+      <hr />
       {isAuthenticated && <Geo />}
-      <br/>
+      <hr />
+      {isAuthenticated && <Weatherweek />}
+      <br />
     </>
   );
 }

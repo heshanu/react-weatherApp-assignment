@@ -7,8 +7,8 @@ import db from "../../utils/weather4days.json";
 
 const Geo = () => {
   const [location, setLocation] = useState("");
-  const [latitude, setLatitude] = useState(6.9271);
-  const [longtitude, setLongtitude] = useState(79.8612);
+  const [latitude, setLatitude] = useState("");
+  const [longtitude, setLongtitude] = useState("");
 
   const [apiData, setApiData] = useState({});
   const [apiData1, setApiData1] = useState({});
@@ -16,7 +16,7 @@ const Geo = () => {
   const [getState, setGetState] = useState("colombo");
   const [state, setState] = useState("colombo");
 
-  const [store3days,setStore3days]=useState(db);
+  const [store3days, setStore3days] = useState(db);
 
   //const url ="https://pro.openweathermap.org/data/2.5/forecast/hourly?lat=latitude&lon=longtitude&appid=process.env.REACT_APP_WEATHER_API_KEY";
   //const apiKey = process.env.REACT_APP_WEATHER_API_KEY;
@@ -42,6 +42,11 @@ const Geo = () => {
     }
   };
 
+  const clearValues = () => {
+    setLatitude("");
+    setLongtitude("");
+    setGetState("");
+  };
   var projectStyle = {
     width: 300,
     height: 300,
@@ -82,7 +87,19 @@ const Geo = () => {
     setGetState(event.target.value);
   };
 
+  const inputLongitude = (event) => {
+    setLongtitude(event.target.value);
+  };
+
+  const inputLatitude = (event) => {
+    setLatitude(event.target.value);
+  };
+
   const submitHandler = () => {
+    setState(getState);
+  };
+
+  const submitHandler1 = () => {
     setState(getState);
   };
 
@@ -98,7 +115,16 @@ const Geo = () => {
   }, [apiUrl]);
 
   //3days weather
-  
+  useEffect(() => {
+    if (longtitude && latitude) {
+      fetch(apiUrl1)
+        .then((res) => res.json())
+        .then((data) => setApiData(data));
+      console.log(JSON.stringify(apiData1));
+    } else {
+    }
+  }, [apiUrl1]);
+
   return (
     <div className="App">
       <header className="d-flex justify-content-center align-items-center">
@@ -116,10 +142,37 @@ const Geo = () => {
               className="form-control"
               onChange={inputHandler}
               value={getState}
+              placeholder="Enter Location"
+            />
+            <input
+              placeholder="Enter Latitude"
+              type="text"
+              id="location-name"
+              className="form-control"
+              onChange={inputLatitude}
+              value={latitude}
+            />
+            <input
+              placeholder="Enter Longitude"
+              type="text"
+              id="location-name"
+              className="form-control"
+              onChange={inputLongitude}
+              value={longtitude}
             />
           </div>
-          <button className="btn btn-primary mt-2" onClick={submitHandler}>
-            Search
+          {getState && (
+            <button className="btn btn-primary mt-2" onClick={submitHandler}>
+              Search
+            </button>
+          )}
+          {longtitude && latitude && (
+            <button className="btn btn-primary mt-2" onClick={submitHandler1}>
+              Search
+            </button>
+          )}
+          <button className="btn btn-danger mt-2" onClick={clearValues}>
+            Clear
           </button>
         </div>
 
@@ -173,12 +226,14 @@ const Geo = () => {
               </div>
             </div>
           ) : (
-            <h1>Loading</h1>
+            <>
+              <h1>Loading</h1>
+              <p>Please Retry!</p>
+            </>
           )}
         </div>
       </div>
       <Weather3days store3days={store3days} />
-      
     </div>
     // return (
     //   <>

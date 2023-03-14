@@ -11,6 +11,7 @@ const Weatherweek = () => {
     <div className="container">
       <div className="row">
         <div className="col-sm">
+          <h1>Weekly Weather!</h1>
           {JSON.stringify(weekWeather)}
           {/*weekWeather.list[0].weather.map((m, index) => {
             return (

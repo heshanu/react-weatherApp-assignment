@@ -4,9 +4,9 @@ import Card from "react-bootstrap/Card";
 
 const Weather3days = ({ store3days }) => {
   return (
-    <div>
+    <div className="c">
       <>
-        <div className="c">
+        <div>
           {/*windSpeed{JSON.stringify(store3days.list[0].wind.speed)}Kmph*/}
           <br />
           {/*countryName{JSON.stringify(store3days.city.country)}*/}

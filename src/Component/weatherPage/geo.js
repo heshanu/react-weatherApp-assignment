@@ -22,7 +22,7 @@ const Geo = () => {
   //const apiKey = process.env.REACT_APP_WEATHER_API_KEY;
   const apiKey = "3088d6ae04c9fcf5da6c42d54fe54922";
   const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${state}&appid=${apiKey}`;
-
+  //weathermap apikey works only for pro versions so i try another api and json object for responses. 
   const apiUrl1 = `https://api.openweathermap.org/data/2.5/forecast/hourly?lat=${latitude}&lon=${longtitude}&appid=${apiKey}`;
   const handleSubmit = (e) => {
     e.preventDefault();

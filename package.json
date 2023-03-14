@@ -2,6 +2,7 @@
   "name": "assignmentapp",
   "version": "0.1.0",
   "private": true,
+  "homepage": "http://heshanu.github.io/react-weatherApp-assignment",
   "dependencies": {
     "@auth0/auth0-react": "^2.0.1",
     "@testing-library/jest-dom": "^5.16.5",

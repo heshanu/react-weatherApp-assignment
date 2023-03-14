@@ -8,11 +8,7 @@ const Weather3days = ({ store3days }) => {
     <div className="container">
       <div className="row">
         <div className="col-sm">
-          {/*windSpeed{JSON.stringify(store3days.list[0].wind.speed)}Kmph*/}
-          <br />
-          {/*countryName{JSON.stringify(store3days.city.country)}*/}
-          <br />
-          {/*cityName{JSON.stringify(store3days.city.name)}*/}
+          
           {store3days.list[0].weather.map((m, index) => {
             return (
               <div key={index}>
@@ -42,11 +38,6 @@ const Weather3days = ({ store3days }) => {
         </div>
 
         <div className="col-sm">
-          {/*windSpeed{JSON.stringify(store3days.list[0].wind.speed)}Kmph*/}
-          <br />
-          {/*countryName{JSON.stringify(store3days.city.country)}*/}
-          <br />
-          {/*cityName{JSON.stringify(store3days.city.name)}*/}
           {store3days.list[1].weather.map((m, index) => {
             return (
               <div key={index}>
@@ -75,11 +66,7 @@ const Weather3days = ({ store3days }) => {
         </div>
 
         <div className="col-sm">
-          {/*windSpeed{JSON.stringify(store3days.list[0].wind.speed)}Kmph*/}
-          <br />
-          {/*countryName{JSON.stringify(store3days.city.country)}*/}
-          <br />
-          {/*cityName{JSON.stringify(store3days.city.name)}*/}
+         
           {store3days.list[2].weather.map((m, index) => {
             return (
               <div key={index}>

@@ -23,7 +23,7 @@ const Geo = () => {
   const apiKey = "3088d6ae04c9fcf5da6c42d54fe54922";
   const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${state}&appid=${apiKey}`;
 
-  const apiUrl1 = `https://api.openweathermap.org/data/2.5/forecast/hourly?lat=${latitude}&lon=${longtitude}&appid=${apiKey}`;
+  const apiUrl1 = `http://api.weatherapi.com/v1/forecast.json?q=${latitude},${longtitude}&key=61701315568d4faaa22163510231303&days=1`;
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(location);
@@ -54,41 +54,13 @@ const Geo = () => {
     backgroundColor: "blue",
   };
 
-  // useEffect(
-  //   async (url) => {
-  //     const fetchData=async()=>{
-  //       const response = await fetch(url);
-  //       const data = await response.json();
-  //       setData(data);
-  //       console.log(data);
-  //       return data;
-  //     }
-
-  //     // const fetchData = async () => {
-  //     //   // navigator.geolocation.getCurrentPosition(function (position) {
-  //     //   //   setLatitude(position.coords.latitude);
-  //     //   //   setLongtitude(position.coords.longitude);
-  //     //   // });
-  //     // await fetch(url)
-  //     //   .then((res) => res.json())
-  //     //   .then((result) => {
-  //     //     setData(result);
-  //     //     console.log(result);
-  //     //   });
-  //     // fetchData(latitude, longtitude).then((data) => {
-  //     //   setData(data);
-  //     //   console.log(data);
-  //     // });
-  //   },
-  //   [latitude, longtitude]
-  // );
-
   const inputHandler = (event) => {
     setGetState(event.target.value);
   };
 
   const inputLongitude = (event) => {
     setLongtitude(event.target.value);
+    console.log();
   };
 
   const inputLatitude = (event) => {
@@ -116,13 +88,10 @@ const Geo = () => {
 
   //3days weather
   useEffect(() => {
-    if (longtitude && latitude) {
-      fetch(apiUrl1)
-        .then((res) => res.json())
-        .then((data) => setApiData(data));
-      console.log(JSON.stringify(apiData1));
-    } else {
-    }
+    fetch(apiUrl1)
+      .then((res) => res.json())
+      .then((data) => setApiData1(data));
+    console.log(apiData1);
   }, [apiUrl1]);
 
   return (
@@ -233,57 +202,8 @@ const Geo = () => {
           )}
         </div>
       </div>
-      <Weather3days store3days={store3days} />
+      <Weather3days apiData1={apiData1} />
     </div>
-    // return (
-    //   <>
-    //     <article>
-    //       <form className="form" onSubmit={handleSubmit}>
-    //         <div className="form-control">
-    //           <label htmlFor="location">Location:</label>
-    //           <input
-    //             type="text"
-    //             id="location"
-    //             name="location"
-    //             value={location}
-    //             onChange={(e) => setLocation(e.target.value)}
-    //           />
-    //         </div>
-    //         <div className="form-control">
-    //           <label htmlFor="lat">Latitude:</label>
-    //           <input
-    //             type="text"
-    //             id="Latitude"
-    //             name="Latitude"
-    //             value={latitude}
-    //             onChange={(e) => setLatitude(e.target.value)}
-    //           />
-    //         </div>
-    //         <div className="form-control">
-    //           <label htmlFor="location">longitude:</label>
-    //           <input
-    //             type="text"
-    //             id="longtitude"
-    //             name="longtitude"
-    //             value={longtitude}
-    //             onChange={(e) => setLongtitude(e.target.value)}
-    //           />
-    //         </div>
-    //         <button type="submit">Search Weather</button>
-    //       </form>
-
-    //       {/*data.map((index, d) => {
-    //         return (
-    //           <div key={d} style={projectStyle}>
-    //             <h1>{}</h1>
-    //           </div>
-    //         );
-    //       })*/}
-    //     </article>
-    //     <Weather3days data={apiData} />
-    //     <button>Here</button>
-    //   </>
-    //);
   );
 };
 export default Geo;

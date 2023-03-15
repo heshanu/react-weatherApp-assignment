@@ -146,7 +146,8 @@ const Geo = () => {
         </div>
 
         <div className="card mt-3 mx-auto" style={{ width: "60vw" }}>
-          {apiData.main ? (
+          {
+          apiData.main ? (
             <div className="card-body text-center">
               <img
                 src={`http://openweathermap.org/img/w/${apiData.weather[0].icon}.png`}
@@ -194,12 +195,15 @@ const Geo = () => {
                 </div>
               </div>
             </div>
-          ) : (
+          ) :(
+            
+          ):(
             <>
               <h1>Loading</h1>
               <p>Please Retry!</p>
             </>
-          )}
+          )  
+          }
         </div>
       </div>
       <Weather3days apiData1={apiData1} />

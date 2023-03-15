@@ -31,12 +31,12 @@ function App() {
       <h1>User is {isAuthenticated ? "Logged in" : "Not LoggedIn"}</h1>
       <div  style={row}>
         <div  style={column}>
-          <LoginButton />
-          <LogoutButton />
+          {/*<LoginButton />*/}
+          {/*<LogoutButton />*/}
         </div>
         <div  style={column}>
-          <Profile />
-        </div>
+          {/*<Profile />*/}
+          </div>
       </div>
       <BrowserRouter>
         <Routes>
@@ -44,9 +44,9 @@ function App() {
         </Routes>
       </BrowserRouter>
       <hr />
-      {isAuthenticated && <Geo />}
+      {<Geo />}
       <hr />
-      {isAuthenticated && <Weatherweek />}
+      {/*isAuthenticated && <Weatherweek />*/}
       <br />
     </>
   );

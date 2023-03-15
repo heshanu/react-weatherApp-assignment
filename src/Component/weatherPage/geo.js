@@ -13,7 +13,7 @@ const Geo = () => {
   const [showLocation, setShowLocation] = useState(true);
 
   const [apiData, setApiData] = useState({});
-  const [apiData1, setApiData1] = useState({});
+  const [apiData1, setApiData1] = useState([]);
   const [apiData2, setApiData2] = useState([]);
 
   const [getState, setGetState] = useState("colombo");
@@ -84,7 +84,7 @@ const Geo = () => {
     setState1(getState1);
     setLatitude(latitude);
     setLongtitude(longtitude);
-    setApiData2(apiData1);
+    setApiData2(apiData1.json());
   };
 
   const kelvinToFarenheit = (k) => {
@@ -227,12 +227,7 @@ const Geo = () => {
           <h2>Coordinate Weather</h2>
           {//console.log(apiData2.forecast.forecastday[0].date)
           //JSON.stringify(apiData2.current)
-          apiData2.current.map((m,index)=>{
-            const {temp_c,temp_f}=m;
-            return(<>
-                {console.log(temp_c)}
-            </>)
-          })
+          (apiData2.current.condition.text).json()
           //setApiData2(JSON.parse(apiData1))
           // console.log()
           }

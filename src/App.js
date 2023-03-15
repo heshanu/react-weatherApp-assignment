@@ -27,7 +27,7 @@ function App() {
 
   return (
     <>
-      <h1>Welcome to WeatherApp!</h1>
+      <h1>Welcome to WeatherApp123!</h1>
       <h1>User is {isAuthenticated ? "Logged in" : "Not LoggedIn"}</h1>
       <div  style={row}>
         <div  style={column}>
